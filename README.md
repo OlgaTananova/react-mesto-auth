@@ -31,7 +31,7 @@
 
 5. Файловая структура CSS фалов сделана по БЭМ.
 
-Проект на gh-pages: [React-mesto-auth]:(https://olgatananova.github.io/mesto-react)
+Проект на gh-pages: [React-mesto-auth]:(https://olgatananova.github.io/react-mesto-auth/)
 
 
 
