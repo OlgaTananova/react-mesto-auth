@@ -1,0 +1,23 @@
+
+.header {
+  max-width: 880px;
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid;
+  border-bottom-color: rgba(84, 84, 84, .7);
+}
+
+@media screen and (max-width: 425px) {
+  .header {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 376px) {
+  .header {
+    width: 83.5%;
+  }
+}
+
+
