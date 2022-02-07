@@ -44,22 +44,27 @@ function App() {
         setEmail(data.data.email);
         setIsLoggedIn(true)
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
       })
   }
 
   useEffect(() => {
     tokenCheck();
-    Promise.all([api.getUserInfo(), api.getInitialCards()])
-      .then(([user, cards]) => {
-        setCurrentUser(user);
-        setCards(cards);
-      })
-      .catch((err) => {
-        console.log(err);
-      })
   }, []);
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      Promise.all([api.getUserInfo(), api.getInitialCards()])
+        .then(([user, cards]) => {
+          setCurrentUser(user);
+          setCards(cards);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, [isLoggedIn])
 
   useEffect(() => {
     isLoggedIn ? navigate('/react-mesto-auth') : navigate('/sign-in');
