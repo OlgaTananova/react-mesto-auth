@@ -10,7 +10,7 @@
     })
 
   export const signUp = ((password, email)=>{
-    return fetch(baseUrl + '/signup', {
+    return fetch(`${baseUrl}/signup`, {
       method: 'POST',
       headers: headers,
       body: JSON.stringify({
@@ -22,7 +22,7 @@
       })
 
   export const signIn = ((password, email)=> {
-    return fetch(baseUrl + '/signin', {
+    return fetch(`${baseUrl}/signin`, {
       method: 'POST',
       headers: headers,
       body: JSON.stringify({
@@ -34,7 +34,7 @@
 
 
  export const verifyUser = ((jwt)=>{
-      return fetch(baseUrl+'/users/me', {
+      return fetch(`${baseUrl}/users/me`, {
         method: "GET",
         headers: {
           "Authorization" : `Bearer ${jwt}`,

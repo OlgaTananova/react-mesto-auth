@@ -78,6 +78,7 @@
 @import url(./blocks/popup/__form-icon/_type/popup__form-icon_type_success.css);
 
 /*Секция регистрации/аутентификации */
+@import url('./blocks/page/__auth/page__auth.css');
 @import url(./blocks/auth-form/auth-form.css);
 @import url(./blocks/auth-form/__heading/auth-form__heading.css);
 @import url(./blocks/auth-form/__input/auth-form__input.css);
