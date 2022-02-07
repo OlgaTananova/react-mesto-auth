@@ -1,22 +1,17 @@
 
 import useForm from '../utils/useForm';
-import Header from './Header';
+import {useMemo} from 'react';
 
-function Login({isLoading, isLoggedIn, onLogin}) {
-  const {values, errors, isValid, handleChange, resetForm} = useForm({
-    email: "",
-    password: ""
-  })
+function Login({isLoading, onLogin}) {
+  const initialValues = useMemo(()=>{return {email: "", password: ""}},[]);
+  const {values, errors, isValid, handleChange} = useForm(initialValues);
 
   function handleSubmit(e) {
     e.preventDefault();
-    onLogin(values.password, values.email, resetForm)
+    onLogin(values.password, values.email)
   }
 
-  return (<>
-    <Header isLoggedIn={isLoggedIn}
-            email={''}
-            needToRegister={false}/>
+  return (<div className={'auth page__auth'}>
     <form className={'auth-form'}
           name={'authorization-form'}
           noValidate={true}
@@ -45,7 +40,7 @@ function Login({isLoading, isLoggedIn, onLogin}) {
         {(!isLoading) ? 'Войти' : 'Вход...'}
       </button>
     </form>
-  </>)
+  </div>)
 }
 
 export default Login

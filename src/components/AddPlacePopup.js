@@ -1,26 +1,31 @@
 import PopupWithForm from './PopupWithForm.js';
 import useForm from '../utils/useForm';
-import {useCallback} from 'react';
+import { useEffect, useMemo} from 'react';
 
-function AddPlacePopup(props) {
-  const isLoading = props.onLoading;
-  const isOpen = props.isOpen;
-  const validation = useForm({name: '', link: ''});
+function AddPlacePopup({onLoading, isOpen, onAddPlace, onClose}) {
+  const initialValues = useMemo(() => {
+    return {name: '', link: ''}
+  }, [])
+  const validation = useForm(initialValues);
 
   function handleSubmit(e) {
     e.preventDefault();
-    props.onAddPlace(validation.values.name, validation.values.link);
+    onAddPlace(validation.values.name, validation.values.link);
   }
 
-  useCallback(()=> {
-    !isOpen&& validation.resetForm();
-  }, [isOpen, validation])
+  useEffect(() => {
+    !isOpen && validation.resetForm();
+  }, [isOpen])
 
 
-  return (
-    <PopupWithForm name={'add-card-form'} title={'Новое место'} isOpen={props.isOpen}
-                   onClose={props.onClose} onSubmit={handleSubmit}
-                  onLoading={props.onLoading}>
+  return (<PopupWithForm name={'add-card-form'}
+                         title={'Новое место'}
+                         isOpen={isOpen}
+                         onClose={onClose}
+                         onSubmit={handleSubmit}
+                         onLoading={onLoading}
+                         isValid={validation.isValid}
+                         isLoading={onLoading}>
       <div className={'popup__form-fieldset'}>
         <input type="text"
                className="popup__form-item popup__form-item_type_card-description"
@@ -44,14 +49,8 @@ function AddPlacePopup(props) {
                required/>
         <span className={`popup__input-error link-error 
                        popup__input-error_active`}>{validation.errors.link}</span>
-        <button type="submit"
-                className={`popup__form-submit-button 
-                ${(!validation.isValid || isLoading)&& 'popup__form-submit-button_inactive'} 
-                popup__form-submit-button_type_add-card-form`}>
-          {isLoading? 'Сохранение...' : 'Создать'}
-        </button>
-      </div></PopupWithForm>
-  )
+      </div>
+    </PopupWithForm>)
 }
 
 export default AddPlacePopup

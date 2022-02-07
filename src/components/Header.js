@@ -1,11 +1,11 @@
 import logo from '../images/logo.svg';
-import {Link} from 'react-router-dom';
+import {Link, useLocation} from 'react-router-dom';
 import {useEffect, useState} from 'react';
 
-function Header({isLoggedIn, email, onLogOut, needToRegister}) {
+function Header({isLoggedIn, email, onLogOut}) {
   const [screenWidth, setScreenWidth] = useState(window.screen.width);
   const [showNavigation, setShowNavigation] = useState(screenWidth > 580);
-
+  const location = useLocation();
 
   function traceScreenWidth() {
     setScreenWidth(window.screen.width);
@@ -31,9 +31,19 @@ function Header({isLoggedIn, email, onLogOut, needToRegister}) {
     setShowNavigation(false)
   }
 
-
   function NavigationBar({columnStyle}) {
-    if (isLoggedIn && !needToRegister) {
+    if (!isLoggedIn && location.pathname === '/sign-up') {
+      return (<Link to={'/sign-in'}
+                    className={'header__link'}>
+        Вход
+      </Link>)
+    } else if (!isLoggedIn && location.pathname === '/sign-in') {
+      return (<Link to={'/sign-up'}
+                    replace
+                    className={'header__link'}>
+        Регистрация
+      </Link>)
+    } else {
       return (
         <nav className={`header__navigation ${columnStyle && 'header__navigation_column'}`}>
           <span className={'header__emailtag'}>{email}</span>
@@ -41,17 +51,6 @@ function Header({isLoggedIn, email, onLogOut, needToRegister}) {
                 to={'/sign-in'}
                 onClick={onLogOut}>Выйти</Link>
         </nav>)
-    } else if (!isLoggedIn && needToRegister) {
-      return (<Link to={'/sign-in'}
-                    className={'header__link'}>
-        Вход
-      </Link>)
-    } else if (!isLoggedIn && !needToRegister) {
-      return (<Link to={'/sign-up'}
-                    replace
-                    className={'header__link'}>
-        Регистрация
-      </Link>)
     }
   }
 
@@ -69,32 +68,26 @@ function Header({isLoggedIn, email, onLogOut, needToRegister}) {
                     aria-label={'Кнопка закрытия окна навигации'}>{}</button>)
   }
 
-  function chooseLayout() {
-    if (!isLoggedIn && showNavigation && !needToRegister) {
+  function HeaderLayout() {
+    if (!isLoggedIn || (isLoggedIn && showNavigation && screenWidth > 580)) {
       return <NavigationBar columnStyle={false}/>
-    } else if (!isLoggedIn && showNavigation && needToRegister) {
-      return <NavigationBar columnStyle={false}/>
-    } else if (!isLoggedIn && !showNavigation && !needToRegister) {
-      return <NavigationBar columnStyle={false}/>
-    } else if (!isLoggedIn && !showNavigation && needToRegister) {
-      return <NavigationBar columnStyle={false}/>
-    } else if (isLoggedIn && showNavigation && !needToRegister && screenWidth > 580) {
-      return <NavigationBar columnStyle={false}/>
-    } else if (isLoggedIn && !showNavigation && !needToRegister && screenWidth < 580) {
+    } else if (isLoggedIn && !showNavigation && screenWidth < 580) {
       return <ShowNavigationBarButton/>;
-    } else if (isLoggedIn && showNavigation && !needToRegister && screenWidth < 580) {
+    } else if (isLoggedIn && showNavigation && screenWidth < 580) {
       return <CloseNavigationBarButton/>;
+    } else {
+      return <NavigationBar columnStyle={false}/>
     }
   }
 
   return (<>
-    {(isLoggedIn && showNavigation && !needToRegister && screenWidth < 580) &&
+    {(isLoggedIn && showNavigation && screenWidth < 580) &&
     <NavigationBar columnStyle={true}/>}
     <header className="header page__header">
       <img className="header__logo"
            src={logo}
            alt="Логотип Mesto"/>
-      {chooseLayout()}
+      <HeaderLayout/>
     </header>
   </>)
 }

@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import {useCallback, useEffect, useState} from 'react';
 
 function useForm(initialValues) {
   const [values, setValues] = useState(initialValues);
@@ -9,22 +9,22 @@ function useForm(initialValues) {
   function handleChange(e) {
     const input = e.target;
      handleError(input);
-     setValues({...values, [e.target.name]: e.target.value});
+     setValues((prev)=>({...prev, [e.target.name]: e.target.value}));
   }
 
 
   function handleError(input) {
-    setErrors({...errors, [input.name]: input.validationMessage});
+    setErrors((prev)=>({...prev, [input.name]: input.validationMessage}));
   }
 
-  function resetForm() {
-    let errorsArr = {};
-    for (let key in errors) {
-      errorsArr = {...errorsArr, [key]: ''}
-    }
-    setErrors(errorsArr);
+  const resetForm = useCallback(() => {
+    setErrors((prev)=>{
+      return Object.fromEntries(Object.keys(prev).map((key)=>{
+        return [key, '']
+      }))
+    });
     setValues(initialValues);
-  }
+  },[])
 
   useEffect(()=>{
     const areErrorsEmpty = Object.values(errors).every(error=>{

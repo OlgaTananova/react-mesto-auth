@@ -1,18 +1,11 @@
-import {useNavigate} from 'react-router-dom'
 
-function InfoToolTip({isSuccess, openToolTip, closeToolTip}) {
-  const navigate = useNavigate();
+function InfoToolTip({isSuccess, isOpen, onClose}) {
 
-  function handleCloseButtonClick() {
-    closeToolTip(false);
-    isSuccess ? navigate('/') : navigate('/sign-up');
-  }
-
-  return (<div className={`popup ${openToolTip && 'popup_opened'}`}>
+  return (<div className={`popup ${isOpen && 'popup_opened'}`}>
       <div className={'popup__container'}>
         <button type={'button'}
                 className={`popup__close-button`}
-                onClick={handleCloseButtonClick}
+                onClick={onClose}
                 aria-label={'Кнопка закрытия модального окна'}>{}</button>
         <div className={'popup__form popup__form_type_infotooltip'}>
           <div className={`popup__form-icon 

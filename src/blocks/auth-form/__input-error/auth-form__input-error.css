@@ -13,7 +13,7 @@
   text-align: left;
 }
 
-@media screen and (max-width: 540px) {
+@media screen and (max-width: 530px) {
   .auth-form__input-error {
     max-width: 83.5%;
   }
