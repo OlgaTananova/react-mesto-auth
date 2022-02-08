@@ -13,6 +13,8 @@ function ConfirmDeletePopup({isOpen, onSubmit, onLoading, onClose, card}) {
                          onClose={onClose}
                          onSubmit={handleSubmit}
                          isLoading={onLoading}
+                         defaultTitle={'Да'}
+                         loadingTitle={'Удаление...'}
                          card={card}>
       <div className={'popup__form-fieldset'}>{}</div>
     </PopupWithForm>)

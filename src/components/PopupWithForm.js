@@ -6,31 +6,22 @@ function PopupWithForm({
                          onSubmit,
                          isValid,
                          isLoading,
+                         defaultTitle,
+                         loadingTitle,
                          children,
                        }) {
+
+  const isFormValid = isValid ?? true;
+  const isButtonDisabled = isLoading || !isFormValid;
+
   function SubmitButton() {
-    if (name === 'confirm-delete-form') {
       return (<button type="submit"
                       className={`popup__form-submit-button 
-                ${isLoading && 'popup__form-submit-button_inactive'}
+                ${isButtonDisabled&& 'popup__form-submit-button_inactive'}
                 popup__form-submit-button_type_${name}`}
-                      disabled={isLoading}>
-          {isLoading ? 'Удаление...' : 'Да'}
+                      disabled={isButtonDisabled}>
+          {isLoading ? loadingTitle: defaultTitle}
         </button>)
-    } else if (name === 'add-card-form') {
-      return (<button type={'submit'}
-                      className={`popup__form-submit-button 
-                ${(!isValid || isLoading) && 'popup__form-submit-button_inactive'} 
-                popup__form-submit-button_type_${name}`}
-                      disabled={isLoading || !isValid}>
-          {isLoading ? 'Сохранение...' : 'Создать'}</button>)
-    }
-    return (<button type={'submit'}
-                    className={`popup__form-submit-button 
-                ${(!isValid || isLoading) && 'popup__form-submit-button_inactive'} 
-                popup__form-submit-button_type_${name}`}
-                    disabled={isLoading || !isValid}>
-        {isLoading ? 'Сохранение...' : 'Сохранить'}</button>)
   }
 
   return (
