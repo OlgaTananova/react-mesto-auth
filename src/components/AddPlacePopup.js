@@ -23,9 +23,10 @@ function AddPlacePopup({onLoading, isOpen, onAddPlace, onClose}) {
                          isOpen={isOpen}
                          onClose={onClose}
                          onSubmit={handleSubmit}
-                         onLoading={onLoading}
                          isValid={validation.isValid}
-                         isLoading={onLoading}>
+                         isLoading={onLoading}
+                         defaultTitle={'Создать'}
+                         loadingTitle={'Сохранение...'}>
       <div className={'popup__form-fieldset'}>
         <input type="text"
                className="popup__form-item popup__form-item_type_card-description"

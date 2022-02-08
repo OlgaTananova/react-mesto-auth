@@ -24,7 +24,7 @@ function useForm(initialValues) {
       }))
     });
     setValues(initialValues);
-  },[])
+  },[initialValues])
 
   useEffect(()=>{
     const areErrorsEmpty = Object.values(errors).every(error=>{

@@ -3,6 +3,7 @@
 /*Глобальные стили*/
 @import url(./vendor/normalize.css);
 @import url(./vendor/fonts/inter/fonts.css);
+@import url(./blocks/container/container.css);
 @import url(./blocks/page/page.css);
 
 /* Секция Header */

@@ -31,7 +31,9 @@ function EditProfilePopup({onLoading, onClose, onUpdateUser, isOpen}) {
                          onClose={onClose}
                          onSubmit={handleSubmit}
                          isLoading={onLoading}
-                         isValid={validation.isValid}>
+                         isValid={validation.isValid}
+                         defaultTitle={'Сохранить'}
+                         loadingTitle={'Сохранение...'}>
       <div className={'popup__form-fieldset'}>
         <input type="text"
                className="popup__form-item popup__form-item_type_profile-name"

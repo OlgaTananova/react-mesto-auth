@@ -24,7 +24,9 @@ function EditAvatarPopup({onLoading, isOpen, onUpdateAvatar, onClose}) {
                          onClose={onClose}
                          onSubmit={handleSubmit}
                          isLoading={isLoading}
-                         isValid={avatar.isValid}>
+                         isValid={avatar.isValid}
+                         defaultTitle={'Сохранить'}
+                         loadingTitle={'Сохранение...'}>
     <div className={'popup__form-fieldset'}>
       <input type="url"
              className="popup__form-item popup__form-item_type_avatar-link"
