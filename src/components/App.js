@@ -23,6 +23,7 @@ function App() {
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen ] = useState(false)
   const [isConfirmDeletePopupOpen, setIsConfirmDeletePopupOpen] = useState(false);
+  const [isImagePopupOpen, setIsImagePopupOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
   const [cards, setCards] = useState([]);
   const [currentUser, setCurrentUser] = useState({});
@@ -88,12 +89,14 @@ function App() {
     setIsEditAvatarPopupOpen(false);
     setIsConfirmDeletePopupOpen(false);
     setIsInfoToolTipOpen(false);
+    setIsImagePopupOpen(false);
     setSelectedCard(null);
     setDeletedCard(null);
   }
 
   function handleCardClick(card) {
-    setSelectedCard(card)
+    setIsImagePopupOpen(true);
+    setSelectedCard(card);
   }
 
   function handleUpdateUser(name, description) {
@@ -277,6 +280,7 @@ function App() {
                         card={deletedCard}
                         onSubmit={handleCardDeleteSubmit}/>
     <ImagePopup card={selectedCard}
+                isOpen={isImagePopupOpen}
                 onClose={closeAllPopups}/>
     <InfoToolTip isSuccess={isRegisterSuccessful}
                  isOpen={isInfoToolTipOpen}

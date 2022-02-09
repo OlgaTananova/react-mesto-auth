@@ -13,6 +13,19 @@ function AddPlacePopup({onLoading, isOpen, onAddPlace, onClose}) {
     onAddPlace(validation.values.name, validation.values.link);
   }
 
+  useEffect(()=>{
+    if (!isOpen) return;
+    function handleEscClose(e) {
+        if (e.key === 'Escape') {
+          onClose();
+        }
+    }
+    document.addEventListener('keydown', handleEscClose);
+    return ()=>{
+      document.removeEventListener('keydown', handleEscClose);
+    }
+  }, [isOpen, onClose])
+
   useEffect(() => {
     !isOpen && validation.resetForm();
   }, [isOpen])

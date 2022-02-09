@@ -25,6 +25,19 @@ function EditProfilePopup({onLoading, onClose, onUpdateUser, isOpen}) {
     }
   }, [isOpen, currentUser])
 
+  useEffect(()=>{
+    if (!isOpen) return;
+    function handleEscClose(e) {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    }
+    document.addEventListener('keydown', handleEscClose);
+    return ()=>{
+      document.removeEventListener('keydown', handleEscClose);
+    }
+  }, [isOpen, onClose])
+
   return (<PopupWithForm name={'edit-profile-form'}
                          title={'Редактировать профиль'}
                          isOpen={isOpen}
