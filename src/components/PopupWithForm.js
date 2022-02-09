@@ -14,6 +14,12 @@ function PopupWithForm({
   const isFormValid = isValid ?? true;
   const isButtonDisabled = isLoading || !isFormValid;
 
+  function handleOverlayClose(e) {
+    if (e.target === e.currentTarget && isOpen) {
+      onClose();
+    }
+  }
+
   function SubmitButton() {
       return (<button type="submit"
                       className={`popup__form-submit-button 
@@ -25,7 +31,8 @@ function PopupWithForm({
   }
 
   return (
-    <div className={`popup popup_type_${name} ${isOpen && 'popup_opened'}`}>
+    <div className={`popup popup_type_${name} ${isOpen && 'popup_opened'}`}
+         onClick={handleOverlayClose}>
       <div className="popup__container">
         <button type="button"
                 onClick={onClose}

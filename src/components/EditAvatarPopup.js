@@ -18,6 +18,19 @@ function EditAvatarPopup({onLoading, isOpen, onUpdateAvatar, onClose}) {
     !isOpen && avatar.resetForm();
   }, [isOpen])
 
+  useEffect(()=>{
+    if (!isOpen) return;
+    function handleEscClose(e) {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    }
+    document.addEventListener('keydown', handleEscClose);
+    return ()=>{
+      document.removeEventListener('keydown', handleEscClose);
+    }
+  }, [isOpen, onClose])
+
   return (<PopupWithForm name={'update-avatar-form'}
                          title={'Обновить аватар'}
                          isOpen={isOpen}
