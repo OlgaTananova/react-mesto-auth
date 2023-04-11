@@ -37,7 +37,7 @@ function PopupWithForm({
         <button type="button"
                 onClick={onClose}
                 className={`popup__close-button popup__close-button_type_${name}`}
-                aria-label={`Кнопка закрытия модального окна ${title}`}>{}</button>
+                aria-label={`${title} popup close button`}>{}</button>
         <form className={`popup__form popup__form_type_${name}`}
               onSubmit={onSubmit}
               name={name}

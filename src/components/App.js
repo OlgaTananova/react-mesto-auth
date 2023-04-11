@@ -36,13 +36,9 @@ function App() {
   const navigate = useNavigate();
 
   function tokenCheck() {
-    const jwt = localStorage.getItem('jwt');
-    if (!jwt) {
-      return
-    }
-    authApi.verifyUser(jwt)
+    authApi.verifyUser()
       .then((data) => {
-        setEmail(data.data.email);
+        setEmail(data.email);
         setIsLoggedIn(true)
       })
       .catch((err) => {
@@ -68,7 +64,7 @@ function App() {
   }, [isLoggedIn])
 
   useEffect(() => {
-    isLoggedIn ? navigate('/react-mesto-auth') : navigate('/sign-in');
+    isLoggedIn ? navigate('/') : navigate('/sign-in');
   }, [isLoggedIn])
 
   function handleEditAvatarClick() {
@@ -130,11 +126,11 @@ function App() {
   }
 
   function handleCardLike(card) {
-    const isLiked = card.likes.some(i => i._id === currentUser._id);
+    const isLiked = card.likes.some(i => i === currentUser._id);
     if (!isLiked) {
       api.likeCard(card._id)
         .then((newCard) => {
-          setCards((cards) => cards.map((c) => c._id === card._id ? newCard : c));
+          setCards(cards => cards.map(c => c._id === card._id ? newCard : c));
         })
         .catch(err => {
           console.log(err)
@@ -142,7 +138,9 @@ function App() {
     } else {
       api.dislikeCard(card._id)
         .then((newCard) => {
-          setCards((cards) => cards.map((c) => c._id === card._id ? newCard : c));
+          setCards((cards) => cards.map((c) => {
+            return c._id === card._id ? newCard : c;
+          }));
         })
         .catch(err => {
           console.log(err);
@@ -193,8 +191,6 @@ function App() {
     setIsLoading(true);
     authApi.signIn(password, email)
       .then((data) => {
-        const jwt = data.token;
-        localStorage.setItem('jwt', jwt);
         setIsLoggedIn(true);
         setEmail(email);
       })
@@ -209,8 +205,9 @@ function App() {
   function onRegister(password, email) {
     setIsLoading(true);
     authApi.signUp(password, email)
+      .then(()=> authApi.signIn(password, email))
       .then((data) => {
-        setEmail(data.data.email);
+        setEmail(email);
         setIsInfoToolTipOpen(true);
         setRegisterSuccessful(true);
         setIsLoggedIn(true);
@@ -226,13 +223,23 @@ function App() {
   }
 
   function onLogOut() {
-    localStorage.removeItem('jwt');
-    setIsLoggedIn(false);
+    setIsLoading(true);
+    api.logout()
+      .then((data)=>{
+        setIsLoggedIn(false);
+      })
+      .catch((err)=>{
+        console.log(err);
+      })
+      .finally(()=>{
+        setIsLoading(false);
+      })
+
   }
 
   function closeInfoToolTip() {
     closeAllPopups();
-    isRegisterSuccessful ? navigate('/react-mesto-auth') : navigate('/sign-up');
+    isRegisterSuccessful ? navigate('/') : navigate('/sign-up');
   }
 
   return (<CurrentUserContext.Provider value={currentUser}>
@@ -240,7 +247,7 @@ function App() {
             email={email || ''}
             onLogOut={onLogOut}/>
     <Routes>
-      <Route path={'/react-mesto-auth'}
+      <Route path={'/'}
              element={<ProtectedRoute isLoggedIn={isLoggedIn}>
                <Main onEditProfile={handleEditProfileClick}
                      onAddPlace={handleAddPlaceClick}

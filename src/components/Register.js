@@ -16,7 +16,7 @@ function Register({isLoading, onRegister}) {
           name={'registration-form'}
           noValidate={true}
           onSubmit={handleSubmit}>
-      <h2 className={'auth-form__heading'}>Регистрация</h2>
+      <h2 className={'auth-form__heading'}>Sign up</h2>
       <input className={'auth-form__input'}
              type={'email'}
              name={'email'}
@@ -28,7 +28,7 @@ function Register({isLoading, onRegister}) {
       <input className={'auth-form__input'}
              type={'password'}
              name={'password'}
-             placeholder={'Пароль'}
+             placeholder={'Password'}
              required={true}
              onChange={handleChange}
              value={values.password}
@@ -37,11 +37,11 @@ function Register({isLoading, onRegister}) {
       <button type={'submit'}
               className={`auth-form__submit-button 
                 ${(!isValid || isLoading) && 'auth-form__submit-button_inactive'}`}>
-        {(!isLoading) ? 'Зарегистрироваться' : 'Регистрация ...'}
+        {(!isLoading) ? 'Sign up' : 'Signing up...'}
       </button>
-      <p className={'auth-form__signin-link'}>Уже зарегистрированы?
+      <p className={'auth-form__signin-link'}> Have you already had an account?
         <Link to={'/sign-in'}
-              className={'auth-form__signin-link ' + 'auth-form__signin-link_active'}>Войти</Link>
+              className={'auth-form__signin-link ' + 'auth-form__signin-link_active'}>Log in</Link>
       </p>
     </form>
   </div>)
