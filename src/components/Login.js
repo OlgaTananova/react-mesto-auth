@@ -16,7 +16,7 @@ function Login({isLoading, onLogin}) {
           name={'authorization-form'}
           noValidate={true}
           onSubmit={handleSubmit}>
-      <h2 className={'auth-form__heading'}>Вход</h2>
+      <h2 className={'auth-form__heading'}>Log in</h2>
       <input className={'auth-form__input'}
              type={'email'}
              name={'email'}
@@ -28,16 +28,16 @@ function Login({isLoading, onLogin}) {
       <input className={'auth-form__input'}
              type={'password'}
              name={'password'}
-             placeholder={'Пароль'}
+             placeholder={'Password'}
              required={true}
              onChange={handleChange}
              value={values.password}
-             minLength={'8'}/>
+             minLength={8}/>
       <span className={'auth-form__input-error'}>{errors.password}</span>
       <button type={'submit'}
               className={`auth-form__submit-button
               ${(!isValid || isLoading) && 'auth-form__submit-button_inactive'}`}>
-        {(!isLoading) ? 'Войти' : 'Вход...'}
+        {(!isLoading) ? 'Log in' : 'Logging...'}
       </button>
     </form>
   </div>)

@@ -35,13 +35,13 @@ function Header({isLoggedIn, email, onLogOut}) {
     if (!isLoggedIn && location.pathname === '/sign-up') {
       return (<Link to={'/sign-in'}
                     className={'header__link'}>
-        Вход
+        Log in
       </Link>)
     } else if (!isLoggedIn && location.pathname === '/sign-in') {
       return (<Link to={'/sign-up'}
                     replace
                     className={'header__link'}>
-        Регистрация
+        Sign up
       </Link>)
     } else {
       return (
@@ -49,7 +49,7 @@ function Header({isLoggedIn, email, onLogOut}) {
           <span className={'header__emailtag'}>{email}</span>
           <Link className={'header__link'}
                 to={'/sign-in'}
-                onClick={onLogOut}>Выйти</Link>
+                onClick={onLogOut}>Log out</Link>
         </nav>)
     }
   }
@@ -58,14 +58,14 @@ function Header({isLoggedIn, email, onLogOut}) {
     return (<button type={'button'}
                     className={'header__navigation-button'}
                     onClick={handleNavButtonClick}
-                    aria-label={'Кнопка навигации'}>{}</button>)
+                    aria-label={'Navigation button'}>{}</button>)
   }
 
   function CloseNavigationBarButton() {
     return (<button type={'button'}
                     className={'header__close-navigation-button'}
                     onClick={handleCloseNavButton}
-                    aria-label={'Кнопка закрытия окна навигации'}>{}</button>)
+                    aria-label={'Close navigation button'}>{}</button>)
   }
 
   function HeaderLayout() {
@@ -86,7 +86,7 @@ function Header({isLoggedIn, email, onLogOut}) {
     <header className="header page__header">
       <img className="header__logo"
            src={logo}
-           alt="Логотип Mesto"/>
+           alt="Logo of Mesto"/>
       <HeaderLayout/>
     </header>
   </>)

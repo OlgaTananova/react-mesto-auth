@@ -32,21 +32,21 @@ function AddPlacePopup({onLoading, isOpen, onAddPlace, onClose}) {
 
 
   return (<PopupWithForm name={'add-card-form'}
-                         title={'Новое место'}
+                         title={'New Place'}
                          isOpen={isOpen}
                          onClose={onClose}
                          onSubmit={handleSubmit}
                          isValid={validation.isValid}
                          isLoading={onLoading}
-                         defaultTitle={'Создать'}
-                         loadingTitle={'Сохранение...'}>
+                         defaultTitle={'Create'}
+                         loadingTitle={'Saving...'}>
       <div className={'popup__form-fieldset'}>
         <input type="text"
                className="popup__form-item popup__form-item_type_card-description"
                name="name"
                value={validation.values.name}
                onChange={validation.handleChange}
-               placeholder="Название"
+               placeholder="Name"
                id="card"
                minLength="2"
                maxLength="20"
@@ -58,7 +58,7 @@ function AddPlacePopup({onLoading, isOpen, onAddPlace, onClose}) {
                name="link"
                value={validation.values.link}
                onChange={validation.handleChange}
-               placeholder="Ссылка на картинку"
+               placeholder="Image link"
                id="link"
                required/>
         <span className={`popup__input-error link-error 

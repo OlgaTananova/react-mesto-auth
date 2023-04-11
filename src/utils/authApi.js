@@ -1,12 +1,12 @@
 
-    const baseUrl = 'https://auth.nomoreparties.co';
+    const baseUrl = 'https://mesto-backend-hec1.onrender.com';
     const headers = { "Content-Type": "application/json"}
 
     const checkResponse = ((response)=>{
       if (response.ok) {
         return response.json();
       }
-      return Promise.reject(`Ошибка, статус ошибки ${response.status}`)
+      return Promise.reject(`Error, error\'s status is ${response.status}`)
     })
 
   export const signUp = ((password, email)=>{
@@ -28,18 +28,19 @@
       body: JSON.stringify({
         "password": password,
         "email": email
-      })
+      }),
+      credentials: 'include',
     })
       .then(res=>checkResponse(res))})
 
 
- export const verifyUser = ((jwt)=>{
+ export const verifyUser = (()=>{
       return fetch(`${baseUrl}/users/me`, {
         method: "GET",
         headers: {
-          "Authorization" : `Bearer ${jwt}`,
-          "Content-Type": "application/json"
-        }
+          "Content-Type": "application/json",
+        },
+        credentials: 'include'
       })
         .then(res=>checkResponse(res))})
 

@@ -1,102 +1,136 @@
-/*** Класс Api для сетевых запросов ***/
+/*** Api Class to fetch data ***/
 
 class Api {
-  constructor({baseURL, headers}) {
+  constructor({baseURL}) {
     this._URL = baseURL;
-    this._headers = headers;
   }
 
   _handleError(res, errorText) {
     if (res.ok) {
       return res.json();
     }
-    return Promise.reject(`${errorText}. Статус ошибки: ${res.status}`);
+    return Promise.reject(`${errorText}. Error status: ${res.status}`);
   }
 
   getUserInfo() {
     return fetch(this._URL + '/users/me', {
-      method: 'GET', headers: this._headers,
+      method: 'GET', headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
     })
       .then((res) => {
-        return this._handleError(res, 'Ошибка, не удалось загрузить данные пользователя');
+        return this._handleError(res, 'Error, loading of the user\'s data has failed');
       });
   }
 
 
   getInitialCards() {
     return fetch(this._URL + '/cards', {
-      method: 'GET', headers: this._headers,
+      method: 'GET', headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include'
     })
       .then(res => {
-        return this._handleError(res, 'Ошибка, не удалось загрузить карточки')
+        return this._handleError(res, 'Error, loading of the cards has failed.')
       });
   }
 
   editProfile({name, description}) {
     return fetch(this._URL + '/users/me', {
-      method: 'PATCH', headers: this._headers, body: JSON.stringify({
+      method: 'PATCH', headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+      body: JSON.stringify({
         name: name, about: description
       })
     })
       .then(res => {
-        return this._handleError(res, 'Ошибка, не удалось обновить профиль пользователя')
+        return this._handleError(res, 'Error, updating of the user\'s profile has failed.')
       });
   }
 
   updateUserAvatar(avatarLink) {
     return fetch(this._URL + '/users/me/avatar', {
-      method: "PATCH", headers: this._headers, body: JSON.stringify({
+      method: "PATCH", headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+      body: JSON.stringify({
         avatar: avatarLink
       })
     })
       .then(res => {
-        return this._handleError(res, 'Ошибка, не удалось обновить аватар пользователя')
+        return this._handleError(res, 'Error, updating of the user\'s avatar has failed.')
       });
   }
 
   addNewCard({name, link}) {
     return fetch(this._URL + '/cards', {
-      method: 'POST', headers: this._headers, body: JSON.stringify({
+      method: 'POST', headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+      body: JSON.stringify({
         name: name, link: link
       })
     })
       .then(res => {
-        return this._handleError(res, 'Ошибка, не удалось добавить карточку')
+        return this._handleError(res, 'Error, adding of the card has failed.')
       });
   }
 
   deleteCard(cardId) {
     return fetch(this._URL + '/cards/' + cardId, {
-      method: 'DELETE', headers: this._headers,
+      method: 'DELETE', headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
     })
       .then(res => {
-        return this._handleError(res, 'Ошибка, не удалось удалить карточку')
+        return this._handleError(res, 'Error, deleting of the card has failed.')
       });
   }
 
   likeCard(cardId) {
     return fetch(this._URL + '/cards/' + cardId + '/likes/', {
-      method: 'PUT', headers: this._headers,
+      method: 'PUT', headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
     })
       .then(res => {
-        return this._handleError(res, 'Ошибка, не удалось поставить лайк карточке')
+        return this._handleError(res, 'Error, putting a like of the card has failed.')
       });
   }
 
   dislikeCard(cardId) {
     return fetch(this._URL + '/cards/' + cardId + '/likes/', {
-      method: 'DELETE', headers: this._headers,
+      method: 'DELETE', headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
     })
       .then(res => {
-        return this._handleError(res, 'Ошибка, не удалось удалить лайк карточки')
+        return this._handleError(res, 'Error, disliking of the card has failed.')
       });
   }
-}
-//Экземпляр класса Api для сетевых запросов
-export const api = new Api({
-  baseURL: 'https://mesto.nomoreparties.co/v1/cohort-31',
-  headers: {
-    authorization: '65021073-788a-4fae-b274-a844bf3e53d6',
-    'Content-Type': 'application/json'
+
+  logout() {
+    return fetch(`${this._URL}/signout`, {
+      method: "POST", headers: {
+        "Content-Type": "application/json"
+      },
+      credentials: 'include'
+    })
+      .then((res) => {
+        return this._handleError(res, 'Error, logging-out has failed.')
+      })
   }
-});
+}
+//API class instance
+export const api = new Api({
+  baseURL: 'https://mesto-backend-hec1.onrender.com'
+})

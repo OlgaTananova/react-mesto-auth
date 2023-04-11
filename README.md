@@ -1,48 +1,47 @@
-# Проект: Фронтэнд проекта Mesto на React c регистрацией и аутентификацией
+# Project: Mesto (front-end part)
 
-Это проектная работа в рамках учебного курса веб-разработки Яндекс.Практикума.
-Цель проекта - освоить и отработать на практике основные концепции фреймворка React.
+This is a pet-project within the web development course at Practicum. The goal of the project is to learn and practice the basic concepts of the React framework.
 
-В данной работе использованы следующие технологии:
+The following technologies were used in this project:
 
-1. CSS:
-    - Flexbox и Gridlayout для построения адаптивной сетки страницы.
-    - Относительные размеры блоков и встроенные функции CSS для расчета "резиновых" размеров блоков.
-    - Медиазапросы для более точной адаптации страницы под различные размеры экранов.
+CSS:
 
-2. HTML:
-    - Различные сематические теги для улучшения доступности страницы для пользователей.
+- Flexbox and Gridlayout for building an adaptive page grid.
+- Relative block sizes and CSS built-in functions for calculating "elastic" block sizes.
+- Media queries for more accurate adaptation of the page to different screen sizes.
+- The CSS file structure is made according to BEM.
+HTML:
 
-3. React:
-   - структура проекта создана на основе Create React App;
-   - основные блоки проекта организованы с помощью функциональных компонентов;
-   - в компонентах используются хуки для отслеживания стейтов и жизненного цикла компонента;
-   - страница интерактивна за счет декларативного подхода к изменению компонентов и их разметки:
-   через изменение стейта компонентов, передачу стейта от одного компонента к другому, 
-   использование подписки на контекст итд.
-   - для валидации форм используется кастомный хук;
-   - роутинг приложения осуществляется через React-router v6, для защиты приватных страниц, доступных только зарегистри
-      рованным пользователям, используются защищенные пути.
-   
-4. Проект подключен к удаленному серверу:
-   - запросы к серверу на изменение профиля пользователя, добавления новых карточек осуществляет классовый компонент Api;
-   - запросы к серверу на регистрацию пользователя, его аутентификацию осуществляются через фунциональный компонент authApi;
-   - для взаимодействия между клиентом и сервером используется REST API запросы;
+- Various semantic tags to improve page accessibility for users.
 
-5. Файловая структура CSS фалов сделана по БЭМ.
+React:
 
-Как открыть приложение:
-- перейдите по ссылке [React-mesto-auth](https://olgatananova.github.io/react-mesto-auth/)
-- зарегистрируйтесь, введя электронную почту и пароль из минимум 8 символов, после успешной
-   регистрации система автоматически перенаправит вас на главную страницу;
-- если вы уже зарегистрированы, то введи эл. почту и пароль для входа в систему;
-- для выхода из системы нажмите ссылку "Выйти", которая находится в правом верхнем углу.
-- на основной странице приложения можно редактировать аватар пользователя, имя и род занятий,
-   добавлять новые карточки и удалять их. Функционал доступен через соответствующие кнопки
-   управления. 
-
-Проект на gh-pages: [React-mesto-auth](https://olgatananova.github.io/react-mesto-auth/)
+- The project structure is created based on Create React App;
+- The main blocks of the project are organized using functional components;
+- Hooks are used in components to track component states and life cycles;
+- The page is interactive due to the declarative approach to changing components and their markup:
+  by changing the state of components, passing state from one component to another,
+  using context subscription, etc.
+- A custom hook is used for form validation;
+- Application routing is done through React-router v6, and protected paths are used to protect private pages accessible
+  only to registered users.
 
 
+The project is connected to a remote server:
 
-Ольга Тананова
+- Api class component handles requests to the server to change user profile and add new cards;
+- authApi functional component handles requests to the server for user registration and authentication;
+- REST API requests are used for communication between the client and server;
+
+
+How to open the application:
+
+- Follow the link [React-mesto-auth](https://olgatananova.github.io/react-mesto-auth);
+- Register by entering an email and a password of at least 8 characters, after successful registration,
+the system will automatically redirect you to the main page;
+- If you are already registered, enter your email and password to log in;
+- To log out, click the "Log out" link in the upper right corner.
+- On the main application page, you can edit the user avatar, name, and occupation,
+add and delete new cards. The functionality is available through corresponding control buttons.
+
+Olga Tananova

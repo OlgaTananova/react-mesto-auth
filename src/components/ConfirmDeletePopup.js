@@ -22,13 +22,13 @@ function ConfirmDeletePopup({isOpen, onSubmit, onLoading, onClose, card}) {
   }, [isOpen, onClose])
 
   return (<PopupWithForm name={'confirm-delete-form'}
-                         title={'Вы уверены?'}
+                         title={'Are you sure?'}
                          isOpen={isOpen}
                          onClose={onClose}
                          onSubmit={handleSubmit}
                          isLoading={onLoading}
-                         defaultTitle={'Да'}
-                         loadingTitle={'Удаление...'}
+                         defaultTitle={'Yes'}
+                         loadingTitle={'Deleting...'}
                          card={card}>
       <div className={'popup__form-fieldset'}>{}</div>
     </PopupWithForm>)

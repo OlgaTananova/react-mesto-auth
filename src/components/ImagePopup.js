@@ -28,7 +28,7 @@ function ImagePopup({card, onClose, isOpen}) {
       <div className="popup__container popup__container_type_image-view">
         <button type="button" onClick={onClose}
                 className="popup__close-button popup__close-button_type_image-view"
-                aria-label="Кнопка закрытия модального окна просмотра фотографий">{}</button>
+                aria-label="Image popup close button">{}</button>
         <figure className="popup__image-container">
           <img src={card? card.link : ''}
                alt={card? card.name : ''}

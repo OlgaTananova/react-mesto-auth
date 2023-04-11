@@ -39,21 +39,21 @@ function EditProfilePopup({onLoading, onClose, onUpdateUser, isOpen}) {
   }, [isOpen, onClose])
 
   return (<PopupWithForm name={'edit-profile-form'}
-                         title={'Редактировать профиль'}
+                         title={'Edit profile'}
                          isOpen={isOpen}
                          onClose={onClose}
                          onSubmit={handleSubmit}
                          isLoading={onLoading}
                          isValid={validation.isValid}
-                         defaultTitle={'Сохранить'}
-                         loadingTitle={'Сохранение...'}>
+                         defaultTitle={'Save'}
+                         loadingTitle={'Saving...'}>
       <div className={'popup__form-fieldset'}>
         <input type="text"
                className="popup__form-item popup__form-item_type_profile-name"
                name="name"
                value={validation.values.name}
                onChange={validation.handleChange}
-               placeholder="Имя"
+               placeholder="Name"
                id="nameInput"
                minLength="2"
                maxLength="40"
@@ -65,7 +65,7 @@ function EditProfilePopup({onLoading, onClose, onUpdateUser, isOpen}) {
                name="about"
                value={validation.values.about}
                onChange={validation.handleChange}
-               placeholder="Род занятий"
+               placeholder="Description"
                id="about-input"
                minLength="2"
                maxLength="200"

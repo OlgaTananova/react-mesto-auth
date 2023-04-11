@@ -1,12 +1,12 @@
 /****** MESTO ******/
 
-/*Глобальные стили*/
+/*Global styles*/
 @import url(./vendor/normalize.css);
 @import url(./vendor/fonts/inter/fonts.css);
 @import url(./blocks/container/container.css);
 @import url(./blocks/page/page.css);
 
-/* Секция Header */
+/* Header */
 @import url(./blocks/page/__header/page__header.css);
 @import url(./blocks/header/header.css);
 @import url(./blocks/header/__logo/header__logo.css);
@@ -18,7 +18,7 @@
 @import url(./blocks/header/__close-navigation-button/header__close-navigation-button.css);
 
 
-/* Секция Profile */
+/* Profile */
 @import url(./blocks/page/__content/page__content.css);
 @import url(./blocks/content/content.css);
 @import url(./blocks/profile/profile.css);
@@ -45,12 +45,12 @@
 @import url(./blocks/element/__likes-qty/element__likes-qty.css);
 @import url(./blocks/element/__trash-button/_inactive/element__trash-button_inactive.css);
 
-/* Секция Footer */
+/* Footer */
 @import url(./blocks/page/__footer/page__footer.css);
 @import url(./blocks/footer/footer.css);
 @import url(./blocks/footer/__copyright/footer__copyright.css);
 
-/* Секция Popup */
+/* Popup */
 @import url(./blocks/popup/popup.css);
 @import url(./blocks/popup/_opened/popup_opened.css);
 @import url(./blocks/popup/__container/popup__container.css);
@@ -78,7 +78,7 @@
 @import url(./blocks/popup/__form-icon/_type/popup__form-icon_type_fail.css);
 @import url(./blocks/popup/__form-icon/_type/popup__form-icon_type_success.css);
 
-/*Секция регистрации/аутентификации */
+/* Login/signup section */
 @import url('./blocks/page/__auth/page__auth.css');
 @import url(./blocks/auth-form/auth-form.css);
 @import url(./blocks/auth-form/__heading/auth-form__heading.css);
