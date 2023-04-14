@@ -1,6 +1,7 @@
 # Project: Mesto (front-end part)
 
-This is a pet-project within the web development course at Practicum. The goal of the project is to learn and practice the basic concepts of the React framework.
+This is a pet-project within the web development course at Practicum. 
+The goal of the project is to learn and practice the basic concepts of the React framework.
 
 The following technologies were used in this project:
 
@@ -33,15 +34,10 @@ The project is connected to a remote server:
 - authApi functional component handles requests to the server for user registration and authentication;
 - REST API requests are used for communication between the client and server;
 
+Link to the back-end part of the project: [Back-end](https://github.com/OlgaTananova/react-mesto-api-full)
 
-How to open the application:
+Project on GithubPages: [React-mesto-auth](https://olgatananova.github.io/react-mesto-auth)
 
-- Follow the link [React-mesto-auth](https://olgatananova.github.io/react-mesto-auth);
-- Register by entering an email and a password of at least 8 characters, after successful registration,
-the system will automatically redirect you to the main page;
-- If you are already registered, enter your email and password to log in;
-- To log out, click the "Log out" link in the upper right corner.
-- On the main application page, you can edit the user avatar, name, and occupation,
-add and delete new cards. The functionality is available through corresponding control buttons.
+See demo how to use Mesto: [Demo](https://scribehow.com/shared/MESTO__vOv-bXDwTyGBziV8yY5aGg)
 
 Olga Tananova
