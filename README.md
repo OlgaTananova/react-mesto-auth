@@ -1,6 +1,7 @@
 # Project: Mesto (front-end part)
 
-This is a pet-project within the web development course at Practicum. The goal of the project is to learn and practice the basic concepts of the React framework.
+This is a pet-project within the web development course at Practicum. 
+The goal of the project is to learn and practice the basic concepts of the React framework.
 
 The following technologies were used in this project:
 
@@ -34,7 +35,7 @@ The project is connected to a remote server:
 - REST API requests are used for communication between the client and server;
 
 
-How to open the application:
+<div><iframe src="https://scribehow.com/embed/MESTO__vOv-bXDwTyGBziV8yY5aGg" width="100%" height="640" allowfullscreen="allowfullscreen" frameborder="0"> </iframe></div>
 
 - Follow the link [React-mesto-auth](https://olgatananova.github.io/react-mesto-auth);
 - Register by entering an email and a password of at least 8 characters, after successful registration,
