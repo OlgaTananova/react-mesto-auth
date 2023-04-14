@@ -34,15 +34,10 @@ The project is connected to a remote server:
 - authApi functional component handles requests to the server for user registration and authentication;
 - REST API requests are used for communication between the client and server;
 
+Link to the back-end part of the project: [Back-end](https://github.com/OlgaTananova/react-mesto-api-full)
 
-<div><iframe src="https://scribehow.com/embed/MESTO__vOv-bXDwTyGBziV8yY5aGg" width="100%" height="640" allowfullscreen="allowfullscreen" frameborder="0"> </iframe></div>
+Project on GithubPages: [React-mesto-auth](https://olgatananova.github.io/react-mesto-auth)
 
-- Follow the link [React-mesto-auth](https://olgatananova.github.io/react-mesto-auth);
-- Register by entering an email and a password of at least 8 characters, after successful registration,
-the system will automatically redirect you to the main page;
-- If you are already registered, enter your email and password to log in;
-- To log out, click the "Log out" link in the upper right corner.
-- On the main application page, you can edit the user avatar, name, and occupation,
-add and delete new cards. The functionality is available through corresponding control buttons.
+See demo how to use Mesto: [Demo](https://scribehow.com/shared/MESTO__vOv-bXDwTyGBziV8yY5aGg)
 
 Olga Tananova
